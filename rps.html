@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let playerwin = 0;
+        let computerwin = 0;
+        function getComputerChoice(){
+            let a = Math.floor(Math.random() * 3) + 1;
+            let choice;
+            if (a===1){
+                choice = "rock";
+            }
+            else if (a===2){
+                choice = "paper";
+            }
+            else {
+                choice = "scissors";
+            }
+            return choice;
+        }
+        function round(playerSelection, computerSelection){
+            let player = playerSelection.toLowerCase();
+            let computer = getComputerChoice();
+            if ((player === "rock" && computer === "paper")){
+                computerwin++;
+                return "You lose LOL paper beats rock"
+            }
+            else if (player === "rock" && computer === "scissors"){
+                playerwin++;
+                return "Good win rock beats scissors"
+            }
+            else if (player === "paper" && computer === "rock"){
+                playerwin++;
+                return "Good win paper beats rock"
+            }
+            else if (player === "paper" && computer === "scissors"){
+                computerwin++;
+                return "You lose LOL scissors beats paper"
+            }
+            else if (player === "scissors" && computer === "paper"){
+                playerwin++;
+                return "Good win scissors beats paper"
+            }
+            else if (player === "scissors" && computer === "rock"){
+                computerwin++;
+                return "You lose LOL rock beats scissors"
+                
+            }
+            else if (player === "rock" && computer === "rock"){
+                return "TIE"
+            }
+            else if (player === "scissors" && computer === "scissors"){
+                return "TIE"
+            }
+            else if (player === "paper" && computer === "paper"){
+                return "TIE"
+            }
+        
+        }
+        function playGame(){
+            for (let x=0; x<5; x++){
+                let player = prompt("Rock paper or scissors: ");
+                let computer = getComputerChoice();
+                console.log("Computer chose " + computer)
+                let status = round(player, computer);
+                console.log(status);
+            }
+            if (playerwin > computerwin){
+                console.log("YOU WIN LFGGG");
+            }
+            else if (computerwin > playerwin){
+                console.log("You lost rip");
+            }
+            else {
+                console.log("You tied against computer")
+            }
+            playerwin=0;
+            computerwin=0;
+        }
+        playGame();
+
+        
+    </script>
+</body>
+</html>
